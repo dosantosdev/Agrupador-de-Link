@@ -89,12 +89,12 @@ body * {
   animation: slide-out 0.2s;
 }
 
-#switch button:hover {
-  outline: 8px solid var(--highlight-color);
+.light #switch button {
+  animation: slide-in 0.2s forwards;
 }
 
-.light #switch button {
-  animation: slide-in 0.4s forwards;
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -120,9 +120,9 @@ ul {
 /*border-radius para fazer arrendondamento de borda, já o backdrop filter é um filtro mesmo e o blur é pra ser um "embaçado", já o -webkit- é utilizado para que o filtro funcione em navegadores que não possuem o backdrop-filter disponível conforme o site caniuse.com onde se descobre se é compatível ou não com os navegadores*/
 ul li a {
   display: flex;
+  align-items: center;
   justify-content: center;
   padding: 16px 24px;
-  align-items: center;
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
   border-radius: 8px;
@@ -147,11 +147,12 @@ ul li a:hover {
   justify-content: center;
   gap: 24px; */
   display: flex;
+  justify-content: center;
   /*gap: 32px;*/ /*esse gap não foi preciso porque ele estava somando nos espaços entre os links e acabou dando um espaço maior do que o necessário*/
   padding: 24px 0;
   font-size: 24px;
-  justify-content: center;
 }
+
 #social-links a {
   display: flex;
   align-items: center;
