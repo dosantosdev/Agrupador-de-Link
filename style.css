@@ -1,0 +1,166 @@
+/* O asterisco '*' é um seletor universal, vai trocar pra tudo*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*O Seletor por padrão utilizado é o :root mas poderia ser o html também, entre outros */
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-desktop.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+/*agora vai pegar a classe criada no html, que é light e aplicar as variaveis de cor*/
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-desktop-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+  /*background: color image repeat position/size */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+/* Seletor de ID '#'*/
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  /*display: block; (PARA TRANSFORMAR EM BLOCK OU SEJA UM ABAIXO DO OUTRO, conseguindo usar a margin auto pra corrigir a centralização) */
+  width: 112px;
+  /*margin: auto;*/
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*switch*/ /* position relative para o botão ficar dentro do switch*/
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+/* z-index é a ordem de sobreposição dos elementos, quanto maior o número mais na frente ele fica*/
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/*links*/
+/*display flex ele se adapta a linha, em conjunto do flex-direction column, passa a ficar em blocos e o gap faz com que ajuste o espaçamento entre eles*/
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+/*border-radius para fazer arrendondamento de borda, já o backdrop filter é um filtro mesmo e o blur é pra ser um "embaçado", já o -webkit- é utilizado para que o filtro funcione em navegadores que não possuem o backdrop-filter disponível conforme o site caniuse.com onde se descobre se é compatível ou não com os navegadores*/
+ul li a {
+  display: flex;
+  justify-content: center;
+  padding: 16px 24px;
+  align-items: center;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-weight: 500; /*font-weight acima de 400 é a mesma coisa que bold(negrito) ser especifico é melhor, então por isso, colocar 500) */
+  transition: background 0.2s;
+}
+
+/*Hover é o pseudo-selector, serve pra aplicar os estilos quando o mouse passa por cima do local*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/* Social links para espaçamento e enquadramento correto */
+#social-links {
+  /* essa configuração foi colocada de forma automática/sugerida, que teve o efeito bem similar a proposta, mas seguir com a outra por enquanto  
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 24px; */
+  display: flex;
+  /*gap: 32px;*/ /*esse gap não foi preciso porque ele estava somando nos espaços entre os links e acabou dando um espaço maior do que o necessário*/
+  padding: 24px 0;
+  font-size: 24px;
+  justify-content: center;
+}
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%; /*para ficar redondo*/
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  text-align: center;
+  padding: 24px 0;
+  font-size: 14px;
+}
